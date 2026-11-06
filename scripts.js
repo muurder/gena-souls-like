@@ -1,75 +1,9 @@
-/* GENA SOULS LIKE — brasas, névoa e mídia */
-/* brasas de fogueira em canvas + YouTube sob clique + revelação ao rolar */
+/* COVIL GAMES — mídia, ofertas e busca */
 
 (() => {
   "use strict";
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  /* ------------------------------------------------------------------
-     BRASAS DE FOGUEIRA — canvas full-page, leve
-     ------------------------------------------------------------------ */
-  const canvas = document.getElementById("embers");
-  if (canvas && !reduceMotion) {
-    const ctx = canvas.getContext("2d");
-    let W, H, embers = [];
-    const COUNT = Math.min(70, Math.floor(window.innerWidth / 22));
-
-    const resize = () => {
-      W = canvas.width = window.innerWidth;
-      H = canvas.height = window.innerHeight;
-    };
-    resize();
-    window.addEventListener("resize", resize);
-
-    const rand = (a, b) => a + Math.random() * (b - a);
-
-    const spawn = (initial) => ({
-      x: rand(0, W),
-      y: initial ? rand(0, H) : H + 10,
-      r: rand(0.6, 2.4),
-      vy: rand(0.12, 0.5),
-      drift: rand(-0.25, 0.25),
-      phase: rand(0, Math.PI * 2),
-      alpha: rand(0.25, 0.8),
-      hue: rand(28, 44),
-    });
-
-    embers = Array.from({ length: COUNT }, () => spawn(true));
-
-    let running = true;
-    let last = performance.now();
-
-    const frame = (now) => {
-      if (!running) return;
-      const dt = Math.min(50, now - last) / 16.7;
-      last = now;
-      ctx.clearRect(0, 0, W, H);
-      for (const e of embers) {
-        e.y -= e.vy * dt;
-        e.phase += 0.012 * dt;
-        e.x += (Math.sin(e.phase) * 0.35 + e.drift) * dt;
-        if (e.y < -12) Object.assign(e, spawn(false));
-        const twinkle = 0.62 + 0.38 * Math.sin(e.phase * 2.1);
-        ctx.beginPath();
-        ctx.arc(e.x, e.y, e.r, 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(${e.hue}, 70%, 62%, ${e.alpha * twinkle})`;
-        ctx.fill();
-      }
-      requestAnimationFrame(frame);
-    };
-    requestAnimationFrame(frame);
-
-    document.addEventListener("visibilitychange", () => {
-      if (document.hidden) {
-        running = false;
-      } else {
-        running = true;
-        last = performance.now();
-        requestAnimationFrame(frame);
-      }
-    });
-  }
 
   /* ------------------------------------------------------------------
      VÍDEOS — facade: o iframe só entra com clique/Enter
@@ -215,28 +149,30 @@
       .catch(() => setGridMessage(epicGrid, "Os arautos da Epic não responderam. Tente de novo em instantes."));
   }
 
-  /* Ofertas relâmpago na home: top 4 descontos do momento */
+  /* Ofertas relâmpago na home: top 4 descontos reais do momento */
   const flashGrid = document.getElementById("flash-grid");
   if (flashGrid) {
-    fetch("https://www.cheapshark.com/api/1.0/deals?pageSize=4&sortBy=savings&steamrating=70")
+    fetch("https://www.cheapshark.com/api/1.0/deals?pageSize=60&sortBy=savings&steamrating=70")
       .then((r) => r.json())
       .then((deals) => {
         if (!Array.isArray(deals) || !deals.length) {
           setGridMessage(flashGrid, "Nenhuma oferta no altar agora.");
           return;
         }
-        flashGrid.replaceChildren(...deals.map((d) => {
-          const card = dealCard({
-            store: STORES[d.storeID] || "Loja parceira",
-            title: d.title,
-            thumb: d.thumb,
-            now: "US$ " + Number(d.salePrice).toFixed(2),
-            was: "US$ " + Number(d.normalPrice).toFixed(2),
-            ends: d.metacriticScore ? "Metacritic " + d.metacriticScore : "",
-            href: "https://www.cheapshark.com/redirect?dealID=" + d.dealID,
-          });
-          return card;
-        }));
+        const paid = deals.filter((d) => Number(d.salePrice) > 0).slice(0, 4);
+        if (!paid.length) {
+          setGridMessage(flashGrid, "Nenhuma oferta paga no topo agora.");
+          return;
+        }
+        flashGrid.replaceChildren(...paid.map((d) => dealCard({
+          store: STORES[d.storeID] || "Loja parceira",
+          title: d.title,
+          thumb: d.thumb,
+          now: "US$ " + Number(d.salePrice).toFixed(2),
+          was: "US$ " + Number(d.normalPrice).toFixed(2),
+          ends: d.metacriticScore > 0 ? "Metacritic " + d.metacriticScore : "",
+          href: "https://www.cheapshark.com/redirect?dealID=" + d.dealID,
+        })));
       })
       .catch(() => setGridMessage(flashGrid, "Os mercadores não responderam. Tente de novo em instantes."));
   }
@@ -260,7 +196,7 @@
             thumb: d.thumb,
             now: "US$ " + Number(d.salePrice).toFixed(2),
             was: "US$ " + Number(d.normalPrice).toFixed(2),
-            ends: d.metacriticScore ? "Metacritic " + d.metacriticScore : "",
+            ends: d.metacriticScore > 0 ? "Metacritic " + d.metacriticScore : "",
             href: "https://www.cheapshark.com/redirect?dealID=" + d.dealID,
           })));
         })

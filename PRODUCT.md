@@ -12,15 +12,15 @@ static HTML/CSS/JS puro (confirmado pelo usuário em 2026-11-06; sem build, hosp
 
 ## Users
 
-Jogadores de RPG soulslike — fãs de Dark Souls, Elden Ring, Bloodborne, Lies of P e afins — que visitam o site para se informar sobre lançamentos, trailers, updates e a história do gênero. Situação típica: leitura casual no desktop ou celular, vindo de buscas e comunidades de games.
+Jogadores brasileiros de todos os gêneros e plataformas (console, PC, mobile) que visitam o site para se informar sobre lançamentos, ofertas e o que há de novo. Situação típica: leitura casual no desktop ou celular, vindo de buscas e comunidades de games.
 
 ## Product Purpose
 
-Gena Souls Like é um portal de notícias dedicado exclusivamente ao gênero soulslike/RPG de ação punitivo. Reúne notícias de todos os tempos (clássicos fundadores e lançamentos atuais), vídeos, imagens e textos sobre o gênero. Sucesso: o visitante encontra rapidamente o que há de novo e relevante em soulslikes e entende o panomara do gênero.
+Covil Games é um portal brasileiro de notícias de games — todos os gêneros e plataformas. Reúne notícias diárias (robô automático), ofertas ao vivo (CheapShark/Epic), jogos grátis, busca de jogos (IGDB) e loja de afiliados Amazon. Sucesso: o visitante encontra rapidamente o que há de novo nos games e volta todo dia.
 
 ## Positioning
 
-Único portal 100% dedicado ao gênero soulslike — sem dispersão para outros gêneros — combinando cobertura de notícias atuais com um arquivo histórico dos jogos de todos os tempos que definiram o gênero.
+Portal dark brasileiro de games com cobertura completa (todos os gêneros e plataformas), ofertas ao vivo e arquivo histórico — a densidade de um GameVicio com identidade própria.
 
 ## Operating Context
 
@@ -35,8 +35,8 @@ Site estático de conteúdo editorial. Conteúdo em português (PT-BR). Mídia e
 
 ## Brand Commitments
 
-- Nome: **Gena Souls Like** (fixado pelo usuário).
-- Fundo/preto é identidade — site preto, estética sombria inspirada em Dark Souls (confirmado pelo usuário).
+- Nome: **Covil Games** (rebranding de 2026-11-06, aprovado pelo usuário; tag de afiliado Amazon genasoulslike-20 mantida pela conta).
+- Fundo escuro é identidade — salão escuro com luzes de marquee por território (mundo "Marquee do Covil", 2026-11-06).
 - Idioma do conteúdo: português brasileiro.
 
 ## Evidence on Hand
@@ -51,7 +51,7 @@ Site estático de conteúdo editorial. Conteúdo em português (PT-BR). Mídia e
 
 ## Product Principles
 
-- Profundidade de gênero acima de amplitude: cobrir soulslike como nenhum site generalista cobre.
+- Densidade diária acima de amplitude editorial: o que há de novo, ao vivo, em um olhar.
 - Informação verificável: cada notícia com data e fonte.
 - Arquivo vivo: o passado do gênero (Demon's Souls 2009 em diante) é conteúdo de primeira classe, igual ao lançamento da semana.
 - Atmosfera respeitada: a estética carrega o tom dos jogos sem sacrificar legibilidade.

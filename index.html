@@ -8,16 +8,11 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230b0a08'/%3E%3Cpath d='M24 7a11 11 0 1 0 0 18' fill='none' stroke='%23d9a860' stroke-width='3' stroke-linecap='round'/%3E%3Cpath d='M14 13.5h9M14 18.5h9' stroke='%23d9a860' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <noscript><style>.reveal{opacity:1;transform:none;filter:none}</style></noscript>
 </head>
 <body>
-
-<!-- atmosfera -->
-<canvas id="embers" aria-hidden="true"></canvas>
-<div class="fog-layer" aria-hidden="true"></div>
-<div class="fog-layer fog-layer--deep" aria-hidden="true"></div>
 
 <!-- navegação -->
 <header class="nav">
@@ -31,13 +26,13 @@
   <nav aria-label="Navegação principal">
     <ul class="nav__links">
       <li><a href="index.html" aria-current="page">Início</a></li>
-      <li class="nav__separator" aria-hidden="true">◆</li>
+      <li class="nav__separator" aria-hidden="true">▪</li>
       <li><a href="noticias.html">Notícias</a></li>
-      <li class="nav__separator" aria-hidden="true">◆</li>
+      <li class="nav__separator" aria-hidden="true">▪</li>
       <li><a href="ofertas.html">Ofertas</a></li>
-      <li class="nav__separator" aria-hidden="true">◆</li>
+      <li class="nav__separator" aria-hidden="true">▪</li>
       <li><a href="jogos.html">Jogos</a></li>
-      <li class="nav__separator" aria-hidden="true">◆</li>
+      <li class="nav__separator" aria-hidden="true">▪</li>
       <li><a href="sobre.html">Sobre</a></li>
     </ul>
   </nav>
@@ -47,14 +42,14 @@
 <section class="hero" id="topo">
   <div class="hero__inner">
     <p class="area-mark"><span>O covil dark dos games · <!-- UPDATED:START -->atualizado em 6 nov 2026<!-- UPDATED:END --></span></p>
-    <h1 class="hero__title">Todo jogo deixa<br>uma <em>marca</em></h1>
+    <h1 class="hero__title">Todo jogo<br>deixa uma <em>marca</em></h1>
     <p class="hero__dek">Notícias de todos os games, ofertas de verdade e o arquivo dos jogos — do clássico cult ao lançamento da semana. Sem ruído, sem clickbait.</p>
     <div class="hero__actions">
       <a class="btn" href="noticias.html">Ler as notícias</a>
-      <a class="btn btn--ghost" href="ofertas.html">Ofertas do abismo →</a>
+      <a class="btn btn--ghost" href="ofertas.html">Ofertas ao vivo →</a>
     </div>
   </div>
-  <p class="hero__scroll" aria-hidden="true">▼ &nbsp;desça ao abismo</p>
+  <p class="hero__scroll" aria-hidden="true">▼ &nbsp;role para explorar</p>
 </section>
 
 <main>
@@ -77,7 +72,7 @@
         <div class="card__body">
           <h3 class="card__title">Nightreign recebeu "The Forsaken Hollows": o primeiro grande DLC chegou em 4 de dezembro</h3>
           <p class="card__dek">FromSoftware e Bandai Namco lançaram em 4/12/2025 a primeira expansão paga de Elden Ring Nightreign para PS5, Xbox Series X|S, PS4, Xbox One e PC. A Kadokawa havia confirmado o DLC em relatório financeiro, citando desempenho "acima das expectativas"; patches de balanceamento seguiram ao longo de 2026.</p>
-          <p class="card__meta">4 dez 2025 <span class="diamond" aria-hidden="true">◆</span> Fonte: Bandai Namco / IGN</p>
+          <p class="card__meta">4 dez 2025 <span class="diamond" aria-hidden="true">▪</span> Fonte: Bandai Namco / IGN</p>
         </div>
         <a class="card__link" href="https://en.bandainamcoent.eu/elden-ring/elden-ring-nightreign/news" target="_blank" rel="noopener" aria-label="Ler a notícia completa na Bandai Namco (abre em nova aba)"></a>
       </article>
@@ -91,7 +86,7 @@
         <div class="card__body">
           <h3 class="card__title">The Duskbloods escapa de 2026: FromSoftware empurra o exclusivo do Switch 2 para 2027</h3>
           <p class="card__dek">Em 29/10/2026, a FromSoftware adiou o PvPvE multiplayer dirigido por Miyazaki para ajustar balanceamento e regras após o Closed Network Test de agosto. A exclusividade de Nintendo Switch 2 permanece.</p>
-          <p class="card__meta">29 out 2026 <span class="diamond" aria-hidden="true">◆</span> Fonte: ANN / IGN</p>
+          <p class="card__meta">29 out 2026 <span class="diamond" aria-hidden="true">▪</span> Fonte: ANN / IGN</p>
         </div>
         <a class="card__link" href="https://www.animenewsnetwork.com/news/2026-10-29/fromsoftware-delays-the-duskbloods-switch-2-game-to-2027/.243333" target="_blank" rel="noopener" aria-label="Ler a notícia completa no Anime News Network (abre em nova aba)"></a>
       </article>
@@ -359,7 +354,7 @@
 </main>
 
 <footer class="footer">
-  <p class="footer__line">Que a chama o guie, cinza.</p>
+  <p class="footer__line">Fique à vontade no covil.</p>
   <p class="footer__meta">Covil Games · o covil dark dos games · fundado em 2026</p>
 </footer>
 
