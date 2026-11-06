@@ -8,7 +8,7 @@
  */
 import { execSync } from "node:child_process";
 
-const INDEX = new URL("../index.html", import.meta.url);
+const INDEX = new URL("../noticias.html", import.meta.url);
 const MAX_CARDS = 10;
 
 const KEYWORDS = [

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O Arquivo — Gena Souls Like | todos os jogos do gênero</title>
+<meta name="description" content="O arquivo dos jogos: a linhagem completa do gênero soulslike de King's Field (1994) a hoje, e a busca por qualquer jogo já catalogado. Datas, desenvolvedores e marcos reais.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230b0a08'/%3E%3Cpath d='M16 4 28 16 16 28 4 16Z' fill='none' stroke='%23d9a860' stroke-width='2'/%3E%3Cpath d='M16 11 21 16 16 21 11 16Z' fill='%23d9a860'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<noscript><style>.reveal{opacity:1;transform:none;filter:none}</style></noscript>
+</head>
+<body>
+
+<!-- atmosfera -->
+<canvas id="embers" aria-hidden="true"></canvas>
+<div class="fog-layer" aria-hidden="true"></div>
+<div class="fog-layer fog-layer--deep" aria-hidden="true"></div>
+
+<!-- navegação -->
+<header class="nav">
+  <a class="nav__sigil" href="index.html">
+    <svg width="24" height="28" viewBox="0 0 26 30" fill="none" aria-hidden="true">
+      <path d="M13 2c1.6 3.6 4.4 4.6 4.4 8.2 0 2.6-1.9 4.3-4.4 4.3s-4.4-1.7-4.4-4.3c0-2.1 1.3-3.2 1.8-5 .7 1.3 1.6 1.7 1.6 3" stroke="#d9a860" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M13 28V12" stroke="#d9a860" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M7.5 14.5h11" stroke="#d9a860" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+    <span>Gena&nbsp;Souls&nbsp;Like</span>
+  </a>
+  <nav aria-label="Navegação principal">
+    <ul class="nav__links">
+      <li><a href="index.html">Início</a></li>
+      <li class="nav__separator" aria-hidden="true">◆</li>
+      <li><a href="noticias.html">Notícias</a></li>
+      <li class="nav__separator" aria-hidden="true">◆</li>
+      <li><a href="ofertas.html">Ofertas</a></li>
+      <li class="nav__separator" aria-hidden="true">◆</li>
+      <li><a href="jogos.html" aria-current="page">Jogos</a></li>
+      <li class="nav__separator" aria-hidden="true">◆</li>
+      <li><a href="sobre.html">Sobre</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- a mensagem de tela -->
+<section class="hero hero--page" id="topo">
+  <div class="hero__inner">
+    <p class="area-mark"><span>As eras do gênero · de 1994 a hoje</span></p>
+    <h1 class="hero__title">O arquivo <em>das eras</em></h1>
+    <p class="hero__dek">A linhagem completa do RPG sombrio ao soulslike: datas reais, marcos verificados e as notas de quem jogou tudo. E, abaixo, a busca por qualquer jogo já catalogado.</p>
+  </div>
+</section>
+
+<main>
+
+<!-- ===================== BUSCA DE JOGOS ===================== -->
+<section class="section" id="busca">
+  <div class="frame">
+    <header class="section-head">
+      <h2 class="section-head__title">Busque um <em>jogo</em></h2>
+      <div class="section-head__rule" aria-hidden="true"></div>
+    </header>
+    <p class="deals__note">Qualquer jogo já catalogado no maior banco de dados aberto de games. Digite o nome e invoque a ficha.</p>
+
+    <form class="deals__search" id="rawg-form" role="search">
+      <label class="visually-hidden" for="rawg-q">Buscar jogo</label>
+      <input class="deals__input" id="rawg-q" type="search" placeholder="buscar jogo… (ex.: dark souls)" autocomplete="off">
+      <button class="btn" type="submit">Buscar</button>
+    </form>
+
+    <div class="deals__grid" id="rawg-grid" aria-live="polite">
+      <p class="deals__loading">O arquivo aguarda uma pergunta.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== A LINHAGEM ===================== -->
+<section class="section section--shaded" id="arquivo">
+  <div class="frame">
+    <header class="section-head">
+      <h2 class="section-head__title">A <em>linhagem</em></h2>
+      <div class="section-head__rule" aria-hidden="true"></div>
+    </header>
+
+<div class="timeline">
+      <article class="era reveal">
+        <p class="era__year">1994</p>
+        <h3 class="era__game">King's Field</h3>
+        <p class="era__fact"><span>FromSoftware</span><span>◆</span><span>PlayStation</span></p>
+        <p class="era__note">O primeiro RPG sombrio da FromSoftware grava o DNA que viraria o gênero: exploração opressiva em primeira pessoa, combate deliberado e um mundo que não explica nada.</p>
+      </article>
+
+      <article class="era reveal">
+        <p class="era__year">2009</p>
+        <h3 class="era__game">Demon's Souls</h3>
+        <p class="era__fact"><span>FromSoftware · Sony</span><span>◆</span><span>PlayStation 3</span></p>
+        <p class="era__note">O molde de tudo: mundo interconectado, perda de almas, invasões e as mensagens deixadas por outros jogadores. Sem ele, não existe "soulslike" — o nome veio depois.</p>
+      </article>
+
+      <article class="era reveal">
+        <p class="era__year">2011</p>
+        <h3 class="era__game">Dark Souls</h3>
+        <p class="era__fact"><span>FromSoftware · Bandai Namco</span><span>◆</span><span>PS3 · Xbox 360 · PC</span></p>
+        <p class="era__note">Lordran transforma o formato em mitologia: 22/09/2011 no Japão, a fogueira, o "YOU DIED" e as inscrições de outros jogadores tornam-se a gramática visual do gênero, a mesma que este site fala. A trilogia já superou 37 milhões de cópias enviadas.</p>
+      </article>
+
+      <article class="era reveal">
+        <p class="era__year">2014</p>
+        <h3 class="era__game">Dark Souls II</h3>
+        <p class="era__fact"><span>FromSoftware · Bandai Namco</span><span>◆</span><span>PS3 · Xbox 360 · PC</span></p>
+        <p class="era__note">O mais controverso da trilogia e o mais jogado da série à época. Drangleic consagra o PvP competitivo, e a Scholar of the First Sin provou o valor de releituras.</p>
+      </article>
+
+      <article class="era reveal">
+        <p class="era__year">2015</p>
+        <h3 class="era__game">Bloodborne</h3>
+        <p class="era__fact"><span>FromSoftware · Sony</span><span>◆</span><span>PlayStation 4</span></p>
+        <p class="era__note">Yharnam troca escudos por agressividade e horror cósmico vitoriano. Até hoje, um exclusivo cultuado (7,46 milhões de cópias só até fev/2022) que define o teto de atmosfera do gênero.</p>
+      </article>
+
+      <article class="era reveal">
+        <p class="era__year">2016</p>
+        <h3 class="era__game">Dark Souls III</h3>
+        <p class="era__fact"><span>FromSoftware · Bandai Namco</span><span>◆</span><span>PS4 · Xbox One · PC</span></p>
+        <p class="era__note">A despedida da trilogia fecha o ciclo das chamas com o combate mais refinado da série até então, e mais de 10 milhões de cópias vendidas.</p>
+      </article>
+
+      <article class="era reveal">
+        <p class="era__year">2017</p>
+        <h3 class="era__game">Nioh · Hollow Knight</h3>
+        <p class="era__fact"><span>Team Ninja / Team Cherry</span><span>◆</span><span>PS4 · PC</span></p>
+        <p class="era__note">O ano em que o gênero ganhou filhos fora da FromSoftware: o estágio ki de Yokai do Team Ninja e o Hallownest independente que vendeu milhões e abriu caminho para a Silksong.</p>
+      </article>
+
+      <article class="era reveal">
+        <p class="era__year">2019</p>
+        <h3 class="era__game">Sekiro: Shadows Die Twice</h3>
+        <p class="era__fact"><span>FromSoftware · Activision</span><span>◆</span><span>PS4 · Xbox One · PC</span></p>
+        <p class="era__note">A postura substitui a esquiva, o Japão Sengoku substitui o fantástico medieval, e o GOTY de 2019 prova que a fórmula suporta reinvenção total.</p>
+      </article>
+
+      <article class="era reveal">
+        <p class="era__year">2020</p>
+        <h3 class="era__game">Demon's Souls Remake · Nioh 2 · Mortal Shell</h3>
+        <p class="era__fact"><span>Bluepoint · Team Ninja · Cold Symmetry</span><span>◆</span><span>PS5 · PS4 · PC</span></p>
+        <p class="era__note">A geração nova abre com o remake que trouxe o molde de 2009 em fidelidade de vitrine, a sequência máxima do Nioh e o pequeno Mortal Shell, aposta indie de refino.</p>
+      </article>
+
+      <article class="era reveal">
+        <p class="era__year">2022</p>
+        <h3 class="era__game">Elden Ring</h3>
+        <p class="era__fact"><span>FromSoftware · Bandai Namco</span><span>◆</span><span>PS4/5 · Xbox · PC</span></p>
+        <p class="era__note">Miyazaki + George R. R. Martin + mundo aberto: 25/02/2022, Metacritic 96, GOTY 2022 e mais de 30 milhões de cópias até abril de 2025. As Lands Between transformam o soulslike em fenômeno global de cultura pop.</p>
+      </article>
+
+      <article class="era reveal">
+        <p class="era__year">2023</p>
+        <h3 class="era__game">Lies of P · Wo Long · Lords of the Fallen</h3>
+        <p class="era__fact"><span>Neowiz · Team Ninja · Hexworks</span><span>◆</span><span>Multiplataforma</span></p>
+        <p class="era__note">O gênero matura fora da From: Pinocchio belle époque vira um dos soulslikes mais aclamados da década, e a moderna Lords of the Fallen renasce com mundo duplo.</p>
+      </article>
+
+      <article class="era reveal">
+        <p class="era__year">2024</p>
+        <h3 class="era__game">Black Myth: Wukong</h3>
+        <p class="era__fact"><span>Game Science</span><span>◆</span><span>PS5 · PC</span></p>
+        <p class="era__note">A jornada ao Oeste em combate punitivo explode no recorde: o RPG de ação chinês vende mais de 20 milhões de cópias em poucos meses e vence prêmios globais.</p>
+      </article>
+
+      <article class="era reveal">
+        <p class="era__year">2025</p>
+        <h3 class="era__game">Khazan · Nightreign · Wuchang · Silksong</h3>
+        <p class="era__fact"><span>Neople · FromSoftware · Leenzee · Team Cherry</span><span>◆</span><span>Multiplataforma</span></p>
+        <p class="era__note">O ano da enchente: Khazan (mar), Nightreign (30/05, 5+ milhões de cópias), Wuchang (24/07) e, em 04/09, a Silksong: sete anos de espera, 7 milhões de cópias em três meses.</p>
+      </article>
+
+      <article class="era reveal">
+        <p class="era__year">2026</p>
+        <h3 class="era__game">Code Vein II · Nioh 3 · Crimson Desert</h3>
+        <p class="era__fact"><span>Bandai Namco · Team Ninja · Pearl Abyss</span><span>◆</span><span>PS5 · Xbox · PC</span></p>
+        <p class="era__note">O presente do gênero: três blockbusters em oito semanas, Phantom Blade Zero lançado em outubro e The Duskbloods adiado para 2027, a próxima promessa de Miyazaki.</p>
+      </article>
+
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <p class="footer__line">Que a chama o guie, cinza.</p>
+  <p class="footer__meta">Gena Souls Like · portal dark de games e RPG · fundado em 2026</p>
+</footer>
+
+<script src="config.js"></script>
+<script src="scripts.js"></script>
+</body>
+</html>

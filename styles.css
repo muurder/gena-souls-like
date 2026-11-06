@@ -804,6 +804,247 @@ a:hover { color: var(--ember-hi); }
   color: var(--ink);
 }
 
+/* ---------- Utilitários ---------- */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.home__more { margin-top: 2.6rem; text-align: center; }
+
+/* ---------- Hero de página interna (menor que o da home) ---------- */
+.hero--page {
+  min-height: 52svh;
+  padding-top: 9rem;
+}
+
+.hero--page .hero__title { font-size: clamp(2.4rem, 6vw, 4.2rem); }
+
+/* ---------- Estado atual da navegação ---------- */
+.nav__links a[aria-current="page"] {
+  color: var(--ember);
+  border-bottom: 1px solid var(--ember-deep);
+}
+
+/* ---------- Cartas de trilha (home) ---------- */
+.cat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(16rem, 100%), 1fr));
+  gap: clamp(1.2rem, 2.4vw, 1.8rem);
+}
+
+.cat-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  min-height: 13rem;
+  padding: 1.5rem 1.4rem 1.3rem;
+  background: linear-gradient(to bottom, var(--pit), var(--pit-deep));
+  border: 1px solid rgba(138, 106, 52, 0.5);
+  box-shadow: inset 0 0 0 1px rgba(11, 10, 8, 0.9);
+  clip-path: polygon(
+    10px 0, calc(100% - 10px) 0, 100% 10px,
+    100% calc(100% - 10px), calc(100% - 10px) 100%,
+    10px 100%, 0 calc(100% - 10px), 0 10px
+  );
+  transition: background 450ms, border-color 450ms, transform 450ms var(--ease-out);
+}
+
+.cat-card:hover {
+  background: linear-gradient(to bottom, var(--pit-2), var(--pit-2-deep));
+  border-color: var(--ember);
+  transform: translateY(-3px);
+}
+
+.cat-card--ember { border-color: var(--ember-deep); }
+
+.cat-card__kicker {
+  color: var(--ash-dim);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.cat-card__title {
+  color: var(--stone);
+  font-family: var(--screen);
+  font-size: 1.7rem;
+  font-weight: 600;
+}
+
+.cat-card--ember .cat-card__title { color: var(--ember); }
+
+.cat-card__dek {
+  color: var(--ash);
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
+
+.cat-card__go {
+  margin-top: auto;
+  color: var(--ember);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+}
+
+/* ---------- Página de ofertas ---------- */
+.deals__note {
+  max-width: 62ch;
+  margin: -1.4rem auto 2rem;
+  text-align: center;
+  color: var(--ash-dim);
+  font-size: 0.98rem;
+  font-style: italic;
+}
+
+.deals__search {
+  display: flex;
+  gap: 0.8rem;
+  max-width: 34rem;
+  margin: 0 auto 2.6rem;
+}
+
+.deals__input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  color: var(--stone);
+  background: rgba(20, 17, 14, 0.85);
+  border: 1px solid rgba(138, 106, 52, 0.5);
+  font-family: var(--read);
+  font-size: 1rem;
+}
+
+.deals__input:focus-visible {
+  outline: 2px solid var(--ember);
+  outline-offset: 2px;
+}
+
+.deals__input::placeholder { color: var(--ash-dim); }
+
+.deals__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(17rem, 100%), 1fr));
+  gap: clamp(1.2rem, 2.4vw, 1.8rem);
+}
+
+.deals__loading,
+.deals__empty {
+  grid-column: 1 / -1;
+  margin: 3rem auto;
+  color: var(--ash-dim);
+  font-style: italic;
+  text-align: center;
+}
+
+.deal {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(to bottom, var(--pit), var(--pit-deep));
+  border: 1px solid rgba(138, 106, 52, 0.5);
+  box-shadow: inset 0 0 0 1px rgba(11, 10, 8, 0.9);
+  clip-path: polygon(
+    10px 0, calc(100% - 10px) 0, 100% 10px,
+    100% calc(100% - 10px), calc(100% - 10px) 100%,
+    10px 100%, 0 calc(100% - 10px), 0 10px
+  );
+  transition: border-color 450ms, transform 450ms var(--ease-out);
+}
+
+.deal:hover { border-color: var(--ember); transform: translateY(-3px); }
+
+.deal__media {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--pit-base);
+}
+
+.deal__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.deal__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.1rem 1.2rem 1.3rem;
+  flex: 1;
+}
+
+.deal__store {
+  color: var(--ash-dim);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.deal__title {
+  color: var(--stone);
+  font-family: var(--read);
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.deal__price {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin-top: auto;
+}
+
+.deal__now {
+  color: var(--ember);
+  font-family: var(--screen);
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.deal__was {
+  color: var(--ash-dim);
+  text-decoration: line-through;
+  font-size: 0.9rem;
+}
+
+.deal__free { color: var(--ember); font-family: var(--screen); font-size: 1.4rem; font-weight: 700; }
+
+.deal__ends {
+  color: var(--ash-dim);
+  font-size: 0.82rem;
+}
+
+.deal__link {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+/* ---------- Busca RAWG ---------- */
+.game-card .deal__media--portrait { aspect-ratio: 3 / 4; }
+
+.game-card .deal__media--portrait img { object-position: top center; }
+
+.game-card__date { color: var(--ash-dim); font-size: 0.85rem; }
+
+.game-card__rating { color: var(--ember); font-size: 0.9rem; }
+
+.game-card__note {
+  color: var(--ash);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
 /* ==========================================================================
    REVELAÇÃO AO ROLAR — a inscrição aparece
    ========================================================================== */
@@ -828,6 +1069,7 @@ a:hover { color: var(--ember-hi); }
   html { scroll-behavior: auto; }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
