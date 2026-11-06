@@ -8,8 +8,11 @@
 :root {
   /* Ground */
   --ink:        #0b0a08;   /* o abismo — fundo da página */
-  --pit:        #14110e;   /* carta / superfície erguida */
-  --pit-2:      #1a1613;   /* superfície em hover */
+  --pit:        rgba(26, 22, 19, 0.65);  /* carta, topo */
+  --pit-deep:   rgba(20, 17, 14, 0.65);  /* carta, base */
+  --pit-2:      rgba(32, 26, 20, 0.8);   /* carta em hover, topo */
+  --pit-2-deep: rgba(22, 18, 15, 0.8);   /* carta em hover, base */
+  --pit-base:   #14110e;   /* superfície sombreada de seção */
   --veil:       #0e0c0a;   /* véu sobre mídia */
 
   /* Ink */
@@ -21,14 +24,12 @@
   --ember:      #d9a860;   /* títulos de destaque, links ativos (8.2:1) */
   --ember-hi:   #f0cd92;   /* hover, faísca viva */
   --ember-deep: #8a6a34;   /* filetes, bordas (decoração, não texto) */
-  --ember-glow: rgba(217, 168, 96, 0.14);
 
   /* Mist */
   --mist-1:     rgba(217, 168, 96, 0.05);
   --mist-2:     rgba(216, 210, 200, 0.04);
 
   /* Layout */
-  --measure:    68ch;
   --gutter:     clamp(1.25rem, 4vw, 3rem);
   --section-y:  clamp(4.5rem, 10vw, 8.5rem);
   --frame:      min(1200px, 92vw);
@@ -393,8 +394,7 @@ a:hover { color: var(--ember-hi); }
   position: relative;
   display: flex;
   flex-direction: column;
-  background:
-    linear-gradient(to bottom, rgba(26, 22, 19, 0.65), rgba(20, 17, 14, 0.65));
+  background: linear-gradient(to bottom, var(--pit), var(--pit-deep));
   border: 1px solid rgba(138, 106, 52, 0.5);
   box-shadow: inset 0 0 0 1px rgba(11, 10, 8, 0.9);
   clip-path: polygon(
@@ -406,7 +406,7 @@ a:hover { color: var(--ember-hi); }
 }
 
 .card:hover {
-  background: linear-gradient(to bottom, rgba(32, 26, 20, 0.8), rgba(22, 18, 15, 0.8));
+  background: linear-gradient(to bottom, var(--pit-2), var(--pit-2-deep));
   border-color: var(--ember);
   transform: translateY(-3px);
 }
@@ -535,7 +535,7 @@ a:hover { color: var(--ember-hi); }
 .card--text {
   background:
     radial-gradient(ellipse 90% 70% at 50% 0%, rgba(217, 168, 96, 0.06), transparent 65%),
-    linear-gradient(to bottom, rgba(26, 22, 19, 0.65), rgba(20, 17, 14, 0.65));
+    linear-gradient(to bottom, var(--pit), var(--pit-deep));
 }
 
 .card--text .card__body { padding-top: 1.8rem; }
@@ -720,6 +720,8 @@ a:hover { color: var(--ember-hi); }
 
 .about .bonfire-sigil { margin-inline: auto; margin-bottom: 1.6rem; }
 
+.about .about__title { text-align: center; }
+
 .about p { margin-top: 1.1rem; text-wrap: pretty; }
 
 .about .about__disclaimer {
@@ -749,8 +751,6 @@ a:hover { color: var(--ember-hi); }
   font-size: 0.85rem;
   letter-spacing: 0.1em;
 }
-
-.footer__meta a { color: var(--ember); border-bottom: 1px solid var(--ember-deep); }
 
 /* ==========================================================================
    REVELAÇÃO AO ROLAR — a inscrição aparece

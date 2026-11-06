@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-06T09:20:00-03:00",
+  "title": "Design System: Gena Souls Like",
+  "extensions": {
+    "colorMeta": {
+      "ember": { "role": "primary", "displayName": "Ember", "canonical": "#d9a860", "tonalRamp": ["#2a1f10", "#4a3a1e", "#6b5228", "#8a6a34", "#a9854a", "#d9a860", "#e8c58a", "#f5e3c4"] },
+      "ink": { "role": "neutral", "displayName": "Ink (the Abyss)", "canonical": "#0b0a08", "tonalRamp": ["#0b0a08", "#100e0b", "#14110e", "#1a1613", "#241f1a", "#322a23", "#453b31", "#5c4f42"] },
+      "ash": { "role": "neutral", "displayName": "Ash (body text)", "canonical": "#b3aca3", "tonalRamp": ["#3a3631", "#565049", "#6e675e", "#8f877d", "#a39b91", "#b3aca3", "#cbc5bc", "#d8d2c8"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Screen Message", "purpose": "A voz do jogo: hero, títulos de seção, anos do arquivo, rodapé." },
+      "body": { "displayName": "Scribe", "purpose": "Leitura editorial: deks, notas, meta." }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "ease-out-world", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Transições e revelações; sempre exponencial ease-out a partir de estado visível." },
+      { "name": "ember-pulse", "value": "3.2s ease-in-out infinite", "purpose": "Pulso do scroll-hint; desliga em prefers-reduced-motion." }
+    ],
+    "breakpoints": [
+      { "name": "mobile", "value": "720px" },
+      { "name": "card-collapse", "value": "900px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Placa de ouro com borda dupla; hover enche de brasa.",
+      "html": "<button class=\"ds-btn-primary\">Ler as inscrições</button>",
+      "css": ".ds-btn-primary { font-family: 'EB Garamond', Georgia, serif; font-size: 0.95rem; letter-spacing: 0.24em; text-transform: uppercase; padding: 0.95rem 2.2rem; border: 1px solid #8a6a34; box-shadow: inset 0 0 0 3px #0b0a08, inset 0 0 0 4px #8a6a34; color: #d9a860; background: transparent; transition: background 350ms, color 350ms; } .ds-btn-primary:hover { background: #d9a860; color: #0b0a08; } .ds-btn-primary:focus-visible { outline: 1px solid #d9a860; outline-offset: 3px; }"
+    },
+    {
+      "name": "Inscription Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Carta-descrição de item: chanfro octogonal, borda dupla, fio de brasa no hover.",
+      "html": "<article class=\"ds-card\"><h3 class=\"ds-card-title\">Título da inscrição</h3><p class=\"ds-card-dek\">Resumo factual da notícia com data e fonte.</p><p class=\"ds-card-meta\">4 DEZ 2025 ◆ FONTE</p></article>",
+      "css": ".ds-card { position: relative; display: flex; flex-direction: column; gap: 0.7rem; background: linear-gradient(to bottom, rgba(26,22,19,0.65), rgba(20,17,14,0.65)); border: 1px solid rgba(138,106,52,0.5); padding: 1.4rem 1.5rem 1.6rem; clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px), 0 10px); transition: border-color 450ms; } .ds-card:hover { border-color: #d9a860; } .ds-card-title { font-family: 'EB Garamond', Georgia, serif; font-weight: 600; font-size: 1.42rem; line-height: 1.22; color: #d8d2c8; margin: 0; } .ds-card:hover .ds-card-title { color: #f0cd92; } .ds-card-dek { font-family: 'EB Garamond', Georgia, serif; color: #b3aca3; font-size: 1.02rem; line-height: 1.55; margin: 0; } .ds-card-meta { color: #8f877d; font-size: 0.82rem; letter-spacing: 0.14em; text-transform: uppercase; border-top: 1px solid rgba(138,106,52,0.28); padding-top: 0.9rem; margin: 0.4rem 0 0; }"
+    },
+    {
+      "name": "Area Mark",
+      "kind": "custom",
+      "refersTo": "area-mark",
+      "description": "Régua-diamante que anuncia áreas, herdada dos menus do jogo.",
+      "html": "<p class=\"ds-area-mark\"><span>O santuário das notícias soulslike</span></p>",
+      "css": ".ds-area-mark { display: flex; align-items: center; justify-content: center; gap: 1.1rem; margin: 0; } .ds-area-mark::before, .ds-area-mark::after { content: \"\"; height: 1px; width: 5.5rem; background: linear-gradient(to right, transparent, #8a6a34); } .ds-area-mark::after { background: linear-gradient(to left, transparent, #8a6a34); } .ds-area-mark span { font-family: 'EB Garamond', Georgia, serif; font-size: 0.95rem; letter-spacing: 0.42em; text-transform: uppercase; color: #8f877d; text-indent: 0.42em; }"
+    },
+    {
+      "name": "Tag",
+      "kind": "chip",
+      "refersTo": "card__tag",
+      "description": "Etiqueta de categoria sobre mídia de carta; placa preta com borda de brasa morta.",
+      "html": "<span class=\"ds-tag\">Lançamento</span>",
+      "css": ".ds-tag { display: inline-block; color: #d9a860; background: rgba(11,10,8,0.85); border: 1px solid #8a6a34; padding: 0.28rem 0.7rem; font-family: 'EB Garamond', Georgia, serif; font-size: 0.72rem; letter-spacing: 0.26em; text-transform: uppercase; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Inscrições de Firelink",
+    "overview": "O site é um pergaminho de mensagens de tela do jogo: cada notícia é uma inscrição deixada por outro jogador, e a home é o santuário onde elas se revelam. A linguagem visual replica a UI de Dark Souls com uma única cor de tinta — o ouro brasa — sobre preto profundo, serifas monumentais e o chanfro octogonal como silhueta de placa.",
+    "keyCharacteristics": [
+      "Uma cor só (ouro brasa) sobre preto profundo; brasa em ≤10% de cada tela.",
+      "Cantos chanfrados via clip-path octogonal, nunca border-radius.",
+      "Cormorant Garamond = mensagens de tela; EB Garamond = leitura.",
+      "◆ diamante como único glifo decorativo."
+    ],
+    "rules": [
+      { "name": "The One Flame Rule", "body": "O ouro brasa é a única cor. Estados usam peso, borda e o próprio ouro.", "section": "colors" },
+      { "name": "The Screen Message Rule", "body": "Cormorant Garamond só aparece onde o site fala como o jogo.", "section": "typography" },
+      { "name": "The No Shadow Rule", "body": "Nenhum box-shadow externo; profundidade vem de camadas de fundo e luz de borda.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do usar ◆ como único ornamento tipográfico e a régua-diamante como marcador de área.",
+      "Do manter o corpo em EB Garamond com contraste ≥ 5.6:1 sobre Ink.",
+      "Do respeitar prefers-reduced-motion: névoa, brasas e revelações desligam."
+    ],
+    "donts": [
+      "Don't usar border-radius, gradientes coloridos, badges saturados ou ícones emoji.",
+      "Don't introduzir uma segunda cor de acento.",
+      "Don't carregar iframes do YouTube sem facade."
+    ]
+  }
+}
