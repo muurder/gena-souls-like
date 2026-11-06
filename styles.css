@@ -25,6 +25,11 @@
   --ember-hi:   #f0cd92;   /* hover, faísca viva */
   --ember-deep: #8a6a34;   /* filetes, bordas (decoração, não texto) */
 
+  /* Acentos do portal — uma cor por território */
+  --flame:      #e07862;   /* ofertas, promoções, urgência (5.9:1) */
+  --jade:       #85c28f;   /* jogos grátis, metas positivas (7.4:1) */
+  --arcane:     #93abe4;   /* plataformas, ferramentas, busca (7.0:1) */
+
   /* Mist */
   --mist-1:     rgba(217, 168, 96, 0.05);
   --mist-2:     rgba(216, 210, 200, 0.04);
@@ -866,6 +871,18 @@ a:hover { color: var(--ember-hi); }
 
 .cat-card--ember { border-color: var(--ember-deep); }
 
+.cat-card--flame { border-color: rgba(224, 120, 98, 0.55); }
+.cat-card--flame:hover { border-color: var(--flame); }
+.cat-card--flame .cat-card__title { color: var(--flame); }
+
+.cat-card--arcane { border-color: rgba(147, 171, 228, 0.45); }
+.cat-card--arcane:hover { border-color: var(--arcane); }
+.cat-card--arcane .cat-card__title { color: var(--arcane); }
+
+.cat-card--jade { border-color: rgba(133, 194, 143, 0.45); }
+.cat-card--jade:hover { border-color: var(--jade); }
+.cat-card--jade .cat-card__title { color: var(--jade); }
+
 .cat-card__kicker {
   color: var(--ash-dim);
   font-size: 0.72rem;
@@ -1017,7 +1034,12 @@ a:hover { color: var(--ember-hi); }
   font-size: 0.9rem;
 }
 
-.deal__free { color: var(--ember); font-family: var(--screen); font-size: 1.4rem; font-weight: 700; }
+.deal__free { color: var(--jade); font-family: var(--screen); font-size: 1.4rem; font-weight: 700; }
+
+.deal--free { border-color: rgba(133, 194, 143, 0.55); }
+.deal--free:hover { border-color: var(--jade); }
+
+.deal__now { color: var(--flame); }
 
 .deal__ends {
   color: var(--ash-dim);
@@ -1044,6 +1066,77 @@ a:hover { color: var(--ember-hi); }
   font-size: 0.95rem;
   line-height: 1.5;
 }
+
+/* ---------- Fio de notícias da home (ticker denso) ---------- */
+.wire {
+  display: grid;
+  gap: 0;
+  border-top: 1px solid rgba(138, 106, 52, 0.4);
+}
+
+.wire__item {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: baseline;
+  gap: 1.1rem;
+  padding: 0.85rem 0.4rem;
+  border-bottom: 1px solid rgba(138, 106, 52, 0.22);
+  transition: background 300ms;
+}
+
+.wire__item:hover { background: rgba(32, 26, 20, 0.55); }
+
+.wire__time {
+  color: var(--ash-dim);
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  min-width: 5.2rem;
+}
+
+.wire__title {
+  color: var(--stone);
+  font-family: var(--read);
+  font-size: 1.04rem;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.wire__item:hover .wire__title { color: var(--ember-hi); }
+
+.wire__cat {
+  color: var(--ash-dim);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.wire__cat--ofertas { color: var(--flame); }
+.wire__cat--gratis { color: var(--jade); }
+.wire__cat--plataformas { color: var(--arcane); }
+
+.wire__link {
+  position: absolute;
+  inset: 0;
+}
+
+.wire__more {
+  margin-top: 1.6rem;
+  text-align: center;
+}
+
+.deals__grid--four {
+  grid-template-columns: repeat(auto-fill, minmax(min(19rem, 100%), 1fr));
+}
+
+.deals__grid--four .deal__media { aspect-ratio: 16 / 9; }
+
+/* ---------- Selos de categoria nas cartas ---------- */
+.card__tag--flame { color: var(--flame); border-color: var(--flame); }
+.card__tag--jade { color: var(--jade); border-color: var(--jade); }
+.card__tag--arcane { color: var(--arcane); border-color: var(--arcane); }
 
 /* ==========================================================================
    REVELAÇÃO AO ROLAR — a inscrição aparece

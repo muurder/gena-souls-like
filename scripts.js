@@ -215,6 +215,32 @@
       .catch(() => setGridMessage(epicGrid, "Os arautos da Epic não responderam. Tente de novo em instantes."));
   }
 
+  /* Ofertas relâmpago na home: top 4 descontos do momento */
+  const flashGrid = document.getElementById("flash-grid");
+  if (flashGrid) {
+    fetch("https://www.cheapshark.com/api/1.0/deals?pageSize=4&sortBy=savings&steamrating=70")
+      .then((r) => r.json())
+      .then((deals) => {
+        if (!Array.isArray(deals) || !deals.length) {
+          setGridMessage(flashGrid, "Nenhuma oferta no altar agora.");
+          return;
+        }
+        flashGrid.replaceChildren(...deals.map((d) => {
+          const card = dealCard({
+            store: STORES[d.storeID] || "Loja parceira",
+            title: d.title,
+            thumb: d.thumb,
+            now: "US$ " + Number(d.salePrice).toFixed(2),
+            was: "US$ " + Number(d.normalPrice).toFixed(2),
+            ends: d.metacriticScore ? "Metacritic " + d.metacriticScore : "",
+            href: "https://www.cheapshark.com/redirect?dealID=" + d.dealID,
+          });
+          return card;
+        }));
+      })
+      .catch(() => setGridMessage(flashGrid, "Os mercadores não responderam. Tente de novo em instantes."));
+  }
+
   if (dealsGrid) {
     const loadDeals = (q) => {
       setGridMessage(dealsGrid, "Consultando os mercadores…");
