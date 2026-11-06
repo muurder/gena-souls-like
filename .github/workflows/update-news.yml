@@ -22,8 +22,10 @@ jobs:
         with:
           node-version: 20
 
-      - name: Buscar notícias e injetar no index.html
+      - name: Buscar notícias e injetar no noticias.html
         run: node scripts/update-news.mjs
+        env:
+          APITUBE_KEY: ${{ secrets.APITUBE_KEY }}
 
       - name: Commit e push (dispara a Vercel)
         run: |

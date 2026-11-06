@@ -2,9 +2,10 @@
 /**
  * GENA SOULS LIKE — atualização automática de notícias (diária)
  *
- * Busca Google News (PT-BR) + Gematsu, filtra pelo gênero soulslike,
- * injeta as manchetes novas no index.html entre os marcadores
- * NEWS:AUTO:START/END e atualiza a data do hero. Sem dependências.
+ * Busca APITube (se APITUBE_KEY no ambiente), Google News (PT-BR) e
+ * Gematsu, filtra pelo gênero, injeta as manchetes novas no
+ * noticias.html entre os marcadores NEWS:AUTO:START/END e atualiza a
+ * data do hero. Sem dependências.
  */
 import { execSync } from "node:child_process";
 
@@ -113,17 +114,47 @@ function cardHtml(item) {
 
 /* ---------- execução ---------- */
 const all = [];
+
+/* APITube (opcional): queries por título, PT e EN. Chave vem do ambiente. */
+const APITUBE_KEY = process.env.APITUBE_KEY || "";
+if (APITUBE_KEY) {
+  const queries = ["elden ring", "dark souls", "soulslike", "fromsoftware", "videogames"];
+  for (const q of queries) {
+    try {
+      const res = await fetch(
+        "https://api.apitube.io/v1/news/everything?title=" + encodeURIComponent(q) +
+        "&per_page=10&published_at.gte=" + new Date(Date.now() - 86400000 * 3).toISOString().slice(0, 10),
+        { headers: { "X-API-Key": APITUBE_KEY }, signal: AbortSignal.timeout(20000) }
+      );
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
+      for (const a of data.results ?? []) {
+        if (a.title && a.href) {
+          let src = a.source?.name?.trim() || "";
+          if (!src) {
+            try { src = new URL(a.href).hostname.replace(/^www\./, ""); } catch { src = "APITube"; }
+          }
+          all.push({ title: a.title, link: a.href, pubDate: a.published_at ?? "", source: src });
+        }
+      }
+    } catch (err) {
+      console.warn(`[aviso] APITube "${q}" falhou: ${err.message}`);
+    }
+  }
+}
+
 for (const feed of FEEDS) all.push(...(await fetchFeed(feed)));
 
 const seen = new Set();
 const news = [];
 for (const item of all) {
-  // Google News anexa " - Fonte" ao título; remove para dedupe limpo
-  const cleanTitle = item.title.replace(/\s+-\s+[^-]{2,40}$/, "").trim();
+  // Google News anexa " - Fonte" (ou " | Fonte") ao título; remove e memoriza
+  const cleanTitle = item.title.replace(/\s+[-|]\s+[^-|]{2,45}$/, "").trim();
   const key = cleanTitle.toLowerCase().replace(/[^a-z0-9]/g, "");
   if (seen.has(key) || !matchesGenre(item.title)) continue;
   seen.add(key);
-  news.push({ ...item, title: cleanTitle });
+  const knownSource = /\s+[-|]\s+[^-|]{2,45}$/.test(item.title) ? item.title.match(/\s+[-|]\s+([^-|]{2,45})$/)?.[1] : null;
+  news.push({ ...item, title: cleanTitle, source: item.source && item.source !== "APITube" && item.source !== "" ? item.source : (knownSource || item.source) });
 }
 news.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
 const selected = news.slice(0, MAX_CARDS);
