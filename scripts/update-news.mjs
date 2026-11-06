@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * GENA SOULS LIKE — atualização automática de notícias (diária)
+ * Covil Games — atualização automática de notícias (diária)
  *
  * Busca APITube (se APITUBE_KEY no ambiente), Google News (PT-BR) e
  * Gematsu, filtra pelo gênero, injeta as manchetes novas no
@@ -95,7 +95,7 @@ function parseRss(xml, feedName) {
 async function fetchFeed(feed) {
   try {
     const res = await fetch(feed.url, {
-      headers: { "User-Agent": "GenaSoulsLikeBot/1.0 (+https://gena-souls-like.vercel.app)" },
+      headers: { "User-Agent": "CovilGamesBot/1.0 (+https://gena-souls-like.vercel.app)" },
       signal: AbortSignal.timeout(20000),
     });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -227,7 +227,7 @@ const END = "<!-- NEWS:AUTO:END -->";
 const sIdx = html.indexOf(START);
 const eIdx = html.indexOf(END);
 if (sIdx === -1 || eIdx === -1) {
-  console.error("[erro] marcadores NEWS:AUTO não encontrados no index.html");
+  console.error("[erro] marcadores NEWS:AUTO não encontrados no noticias.html");
   process.exit(1);
 }
 
