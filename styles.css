@@ -753,6 +753,58 @@ a:hover { color: var(--ember-hi); }
 }
 
 /* ==========================================================================
+   A LOJA DO CINZA — relíquias com links de afiliado
+   ========================================================================== */
+.shop__note {
+  max-width: 62ch;
+  margin: -1.6rem auto 2.6rem;
+  text-align: center;
+  color: var(--ash-dim);
+  font-size: 0.95rem;
+  font-style: italic;
+}
+
+.shop__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));
+  gap: clamp(1.2rem, 2.4vw, 1.8rem);
+}
+
+.card--product .card__media--portrait {
+  aspect-ratio: 3 / 4;
+}
+
+.card--product .card__media--portrait img {
+  object-position: top center;
+}
+
+.card--product .card__body {
+  padding: 1.2rem 1.3rem 1.4rem;
+}
+
+.card--product .card__title { font-size: 1.25rem; }
+
+.card--product .card__dek { font-size: 0.98rem; }
+
+.product__cta {
+  position: relative;
+  z-index: 3;               /* acima da carta-link que cobre o card */
+  display: inline-block;
+  color: var(--ember);
+  border: 1px solid var(--ember-deep);
+  padding: 0.5rem 1rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: background 350ms, color 350ms;
+}
+
+.product__cta:hover {
+  background: var(--ember);
+  color: var(--ink);
+}
+
+/* ==========================================================================
    REVELAÇÃO AO ROLAR — a inscrição aparece
    ========================================================================== */
 .reveal {

@@ -117,6 +117,22 @@
   }
 
   /* ------------------------------------------------------------------
+     LINKS DE AFILIADO (Amazon Associates)
+     Preencha AMAZON_TAG com seu ID (ex.: "genasoulsli-20") quando
+     cadastrar no affiliates.amazon.com.br; sem tag, os links abrem
+     a busca da Amazon normalmente (sem comissão).
+     ------------------------------------------------------------------ */
+  const AMAZON_TAG = ""; // ex.: "genasoulsli-20"
+  document.querySelectorAll("a[data-amazon]").forEach((a) => {
+    if (!AMAZON_TAG) return;
+    try {
+      const url = new URL(a.href);
+      url.searchParams.set("tag", AMAZON_TAG);
+      a.href = url.toString();
+    } catch { /* href inválido: deixa como está */ }
+  });
+
+  /* ------------------------------------------------------------------
      IMAGENS QUE FALHAM — o véu engole, o alt carrega o peso
      ------------------------------------------------------------------ */
   document.querySelectorAll("img[data-fadeable]").forEach((img) => {
