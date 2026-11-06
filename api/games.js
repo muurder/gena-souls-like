@@ -56,8 +56,7 @@ module.exports = async (req, res) => {
       body:
         `search "${q.replace(/"/g, "")}"; ` +
         "fields name,slug,first_release_date,total_rating,aggregated_rating,summary,cover.url; " +
-        "limit 12; " +
-        "where version_parent = null & category = (0,4,8,9,10,11);",
+        "limit 12;",
     });
     if (!igdb.ok) throw new Error(`IGDB HTTP ${igdb.status}`);
     const games = await igdb.json();
