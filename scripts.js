@@ -122,7 +122,7 @@
      cadastrar no affiliates.amazon.com.br; sem tag, os links abrem
      a busca da Amazon normalmente (sem comissão).
      ------------------------------------------------------------------ */
-  const AMAZON_TAG = ""; // ex.: "genasoulsli-20"
+  const AMAZON_TAG = "genasoulslike-20";
   document.querySelectorAll("a[data-amazon]").forEach((a) => {
     if (!AMAZON_TAG) return;
     try {
