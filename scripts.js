@@ -251,62 +251,69 @@
   }
 
   /* ------------------------------------------------------------------
-     BUSCA DE JOGOS — RAWG (só na página Jogos)
+     BUSCA DE JOGOS — via /api/games (IGDB na Vercel, só na página Jogos)
      ------------------------------------------------------------------ */
   const rawgGrid = document.getElementById("rawg-grid");
   const rawgForm = document.getElementById("rawg-form");
 
   if (rawgGrid && rawgForm) {
-    const KEY = (window.GENA_CONFIG && window.GENA_CONFIG.RAWG_KEY) || "";
-    if (!KEY) {
-      setGridMessage(rawgGrid, "A busca aguarda a chave do arquivo (RAWG). Crie a sua grátis em rawg.io/apidocs.");
-    } else {
-      const gameCard = (g) => {
-        const c = el("article", "deal game-card reveal is-visible");
-        const media = el("div", "deal__media deal__media--portrait");
-        if (g.background_image) {
-          const img = document.createElement("img");
-          img.src = g.background_image; img.alt = `Capa de ${g.name}`;
-          img.loading = "lazy"; img.decoding = "async";
-          img.setAttribute("data-fadeable", "");
-          media.appendChild(img);
-        }
-        const body = el("div", "deal__body");
-        body.appendChild(el("p", "deal__store", g.released ? new Date(g.released).toLocaleDateString("pt-BR") : "Sem data"));
-        body.appendChild(el("h3", "deal__title", g.name));
-        if (g.rating) body.appendChild(el("p", "game-card__rating", `◆ ${g.rating.toFixed(1)} / 5`));
-        if (g.metacritic) body.appendChild(el("p", "game-card__note", `Metacritic ${g.metacritic}`));
-        c.appendChild(media);
-        c.appendChild(body);
-        const a = el("a", "deal__link");
-        a.href = "https://rawg.io/games/" + g.slug;
-        a.target = "_blank"; a.rel = "noopener";
-        a.setAttribute("aria-label", `Ver ficha de ${g.name} no RAWG (abre em nova aba)`);
-        c.appendChild(a);
-        return c;
-      };
+    const esc = (s) =>
+      String(s).replace(/[&<>"]/g, (c) =>
+        ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
-      const search = (q) => {
-        setGridMessage(rawgGrid, "Invocando o arquivo…");
-        fetch("https://api.rawg.io/api/games?key=" + encodeURIComponent(KEY) +
-              "&search=" + encodeURIComponent(q) + "&page_size=12")
-          .then((r) => r.json())
-          .then((data) => {
-            const games = data && data.results;
-            if (!Array.isArray(games) || !games.length) {
-              setGridMessage(rawgGrid, "O arquivo não conhece esse nome. Tente outro.");
-              return;
-            }
-            rawgGrid.replaceChildren(...games.map(gameCard));
-          })
-          .catch(() => setGridMessage(rawgGrid, "O arquivo não respondeu. Tente de novo em instantes."));
-      };
+    const gameCardHtml = (g) => {
+      const released = g.released
+        ? new Date(g.released).toLocaleDateString("pt-BR")
+        : "Sem data";
+      const rating = g.rating ? `<p class="game-card__rating">◆ ${(g.rating / 20).toFixed(1)} / 5</p>` : "";
+      const meta = g.metacritic ? `<p class="game-card__note">Metacritic ${Math.round(g.metacritic)}</p>` : "";
+      const cover = g.cover
+        ? `<img src="${esc(g.cover)}" alt="Capa de ${esc(g.name)}" data-fadeable loading="lazy" decoding="async">`
+        : "";
+      const summary = g.summary
+        ? `<p class="game-card__note">${esc(g.summary.slice(0, 180))}${g.summary.length > 180 ? "…" : ""}</p>`
+        : "";
+      return `<article class="deal game-card reveal is-visible">
+        <div class="deal__media deal__media--portrait">${cover}</div>
+        <div class="deal__body">
+          <p class="deal__store">${released}</p>
+          <h3 class="deal__title">${esc(g.name)}</h3>
+          ${rating}${meta}${summary}
+        </div>
+        <a class="deal__link" href="https://www.igdb.com/games/${esc(g.slug)}" target="_blank" rel="noopener" aria-label="Ver ficha de ${esc(g.name)} na IGDB (abre em nova aba)"></a>
+      </article>`;
+    };
 
-      rawgForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const q = document.getElementById("rawg-q").value.trim();
-        if (q) search(q);
-      });
-    }
+    const search = (q) => {
+      setGridMessage(rawgGrid, "Invocando o arquivo…");
+      fetch("/api/games?q=" + encodeURIComponent(q))
+        .then(async (r) => {
+          const data = await r.json();
+          if (!r.ok) throw new Error(data.error || `HTTP ${r.status}`);
+          return data;
+        })
+        .then((games) => {
+          if (!Array.isArray(games) || !games.length) {
+            setGridMessage(rawgGrid, "O arquivo não conhece esse nome. Tente outro.");
+            return;
+          }
+          rawgGrid.replaceChildren(
+            ...games.map((g) => {
+              const tpl = document.createElement("template");
+              tpl.innerHTML = gameCardHtml(g).trim();
+              return tpl.content.firstElementChild;
+            })
+          );
+        })
+        .catch((err) => setGridMessage(rawgGrid, err.message.includes("não foi configurada")
+          ? "A busca do arquivo ainda não foi configurada. As chaves da Twitch estão a caminho."
+          : "O arquivo não respondeu. Tente de novo em instantes."));
+    };
+
+    rawgForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const q = document.getElementById("rawg-q").value.trim();
+      if (q) search(q);
+    });
   }
 })();
